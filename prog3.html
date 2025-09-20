@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Prime checker</title>
+        <script>
+            function prime()
+            {
+            var i,c=0,a=document.getElementById("N").value;
+            for(i=1;i<=a;i++)
+            {
+                if(a%i==0)
+                c++;
+            }
+            if(c==2)
+	    {
+                window.alert("Number "+a+" is prime");
+	    }
+        else{
+            window.alert("Number "+a+" is not prime");
+        }
+            }
+        </script>
+    </head>
+    <body>
+        <center>
+        <h1>Check if the number is prime or not</h1>
+		<br>
+		<label for="input">Enter number:</label>
+        <input type="number" id="N">
+        <br>
+        <br>
+        <button onclick="prime()">Check</button>
+
+    </center>
+        </body>
+</html>

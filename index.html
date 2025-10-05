@@ -2,34 +2,78 @@
     <head>
         <title>Prime checker</title>
         <script>
+        
             function prime()
             {
-            var i,c=0,a=document.getElementById("N").value;
-            for(i=1;i<=a;i++)
-            {
-                if(a%i==0)
-                c++;
-            }
-            if(c==2)
-	    {
-                window.alert("Number "+a+" is prime");
-	    }
-        else{
-            window.alert("Number "+a+" is not prime");
-        }
+                var i,c=0,a=document.getElementById("N").value;
+                for(i=1;i<=a;i++)
+                {
+                    if(a%i==0)
+                    c++;
+                }
+                if(c==2)
+	            {
+                    document.getElementById("a").textContent=(a+" is a prime number");
+	            }
+                else
+                {
+                    document.getElementById("a").textContent=(a+" is not a prime number");
+                }
             }
         </script>
+        <style>
+            /* Floating numbers animation */
+    .number-rain {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .fallingtext {
+        position: absolute;
+        font-family: 'Orbitron', monospace;
+        font-size: 20px;
+        opacity: 0.15; /* increased brightness */
+        color: rgb(0, 19, 67);
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-100%); opacity: 0.15; }
+        50% { opacity: 0.25; }
+        100% { transform: translateY(110vh); opacity: 0.15; }
+    }
+        </style>
     </head>
     <body>
         <center>
+            <div class="number-rain" id="numberRain"></div>
+            <script>    // Floating number generation
+        let x=['g','r','a','y','m','a','l','k','i','n'];
+        const rain = document.getElementById('numberRain');
+        for(let i=0;i<120;i++){ // more numbers for better visibility
+            let num = document.createElement('div');
+            num.classList.add('fallingtext');
+            num.textContent = x[Math.floor(Math.random()*10)];
+            num.style.left = Math.random()*100+'%';
+            num.style.fontSize = Math.random()*25 + 15 + 'px';
+            num.style.animationDuration = (5+Math.random()*10)+'s';
+            num.style.animationDelay = Math.random()*5+'s';
+            rain.appendChild(num);
+        }</script>
         <h1>Check if the number is prime or not</h1>
 		<br>
-		<label for="input">Enter number:</label>
+		<p>Enter number:</p>
         <input type="number" id="N">
         <br>
         <br>
         <button onclick="prime()">Check</button>
-
+        <p id="a"> </p>
     </center>
         </body>
 </html>
